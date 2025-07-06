@@ -193,9 +193,6 @@ print(categorize_countries(new_countries))
 # Create a function returning a dictionary, where keys stand for starting letters of countries and values are the number of country names starting with that letter.
 
 
-# Declare a get_first_ten_countries function - it returns a list of first ten countries from the countries.js list in the data folder.
-
-
 # Using Lambda
 def staring_letter_countries(new_countries):
     first_letters = map(lambda country: country[0], new_countries)
@@ -234,6 +231,14 @@ def starting_letter_countries(new_countries):
 
 print(starting_letter_countries(new_countries))
 
+# Declare a get_first_ten_countries function - it returns a list of first ten countries from the countries.js list in the data folder.
+
+
+def get_first_ten(new_countries):
+    return list(new_countries[:10])
+
+
+print(get_first_ten(new_countries))
 
 # Declare a get_last_ten_countries function that returns the last ten countries in the countries list.
 
@@ -316,14 +321,16 @@ print(most_spoken_languages(countries_info))
 # Sort out the ten most populated countries."
 
 
-def most_population(countries_info):
+def most_populated(countries_info):
     # Extract name and population for each country using map
     population_data = map(
         lambda country: (country["name"], country["population"]), countries_info
     )
     # Sort by population in descending order
     sorted_population = sorted(population_data, key=lambda x: x[1], reverse=True)
-    return list(sorted_population)
+
+    top_10 = sorted_population[:10]
+    return top_10
 
 
-print(most_population(countries_info))
+print(most_populated(countries_info))
